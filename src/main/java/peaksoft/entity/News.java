@@ -5,7 +5,6 @@ import lombok.*;
 import peaksoft.enums.Category;
 
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @Entity
@@ -39,4 +38,9 @@ public class News {
             CascadeType.DETACH,
             CascadeType.REFRESH})
     private User user;
+    @OneToMany(mappedBy = "news",cascade = CascadeType.ALL)
+    private List<Comments>comments;
+
+    @OneToMany(mappedBy = "news",cascade = CascadeType.ALL)
+    private List<Favorite>favorites;
 }
